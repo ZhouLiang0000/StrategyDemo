@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.ai.kara.demo.proxy.ProxyActivity;
 import com.ai.kara.demo.strategy.StrategyActivity;
 
 import butterknife.Bind;
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 StrategyActivity.startStrategyActivity(mContext);
                 break;
             case R.id.bt2:
+                ProxyActivity.startProxyActivity(mContext);
                 break;
             case R.id.bt3:
                 break;

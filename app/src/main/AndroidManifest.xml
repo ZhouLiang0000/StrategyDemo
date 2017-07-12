@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".strategy.StrategyActivity"/>
+        <activity android:name=".proxy.ProxyActivity"/>
     </application>
 
 </manifest>
