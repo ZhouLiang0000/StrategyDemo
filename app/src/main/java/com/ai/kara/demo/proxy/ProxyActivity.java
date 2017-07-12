@@ -3,6 +3,7 @@ package com.ai.kara.demo.proxy;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -61,20 +62,24 @@ public class ProxyActivity extends AppCompatActivity {
      * 第三个参数handler， 我们这里将这个代理对象关联到了上方的 InvocationHandler 这个对象上
      */
     private void dynamicProxy() {
-        Customer customer = new Customer();
-        customer.setCash(Integer.parseInt(cashTv.getText().toString()));
-        customer.setmContext(ProxyActivity.this);
+        Customer customer = getCustomer();
         InvocationHandler handler = new DynamicProxy(customer);
         IBuyCar mIBuyCar = (IBuyCar) Proxy.newProxyInstance(handler.getClass().getClassLoader(), customer.getClass().getInterfaces(), handler);
         mIBuyCar.buyCar();
     }
 
     private void staticProxy() {
+        Customer customer = getCustomer();
+        BuyCarProxy proxy = new BuyCarProxy(ProxyActivity.this, customer);
+        proxy.buyCar();
+    }
+
+    @NonNull
+    private Customer getCustomer() {
         Customer customer = new Customer();
         customer.setCash(Integer.parseInt(cashTv.getText().toString()));
         customer.setmContext(ProxyActivity.this);
-        BuyCarProxy proxy = new BuyCarProxy(ProxyActivity.this, customer);
-        proxy.buyCar();
+        return customer;
     }
 
 }
