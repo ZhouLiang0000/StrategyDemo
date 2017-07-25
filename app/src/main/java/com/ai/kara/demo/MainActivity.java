@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
+import com.ai.kara.demo.Template.TemplateActivity;
 import com.ai.kara.demo.proxy.ProxyActivity;
 import com.ai.kara.demo.strategy.StrategyActivity;
+import com.bumptech.glide.Glide;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
         mContext = MainActivity.this;
+        Glide.with(MainActivity.this);
     }
 
     @OnClick({R.id.bt1, R.id.bt2, R.id.bt3, R.id.bt4, R.id.bt5, R.id.bt6})
@@ -51,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 ProxyActivity.startProxyActivity(mContext);
                 break;
             case R.id.bt3:
+                TemplateActivity.startTemplateActivity(mContext);
                 break;
             case R.id.bt4:
                 break;
